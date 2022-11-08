@@ -1,13 +1,13 @@
-import numpy as np
-
-
 def find_max_multiply(array):
-    absolute_value = np.abs(array)
-    absolute_value.sort()
-    if len(absolute_value) > 1:
-        return absolute_value[-1] * absolute_value[-2]
-    else:
-        return absolute_value[0]
+    if len(array) < 2:
+        return
+    absolute_values = [abs(i) for i in array]
+    value = max(absolute_values)
+    first_index = absolute_values.index(value)
+    absolute_values[first_index] = 0
+    value = max(absolute_values)
+    second_index = absolute_values.index(value)
+    return array[first_index] * array[second_index]
 
 
 if __name__ == '__main__':
